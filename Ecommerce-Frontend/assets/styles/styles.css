@@ -750,3 +750,262 @@ form .btn:hover {
     box-shadow: 0 0 20px 0px var(--grey-color);
     overflow: hidden;
 }
+
+
+
+
+.form-container2 span {
+    font-weight: bold;
+    padding: 0 10px;
+    color: var(--black-color);
+    cursor: pointer;
+    width: 100px;
+    display: inline-block;
+}
+
+.form-btn {
+    display: inline-block;
+}
+
+.form-container2 form {
+    max-width: 300px;
+    padding: 0 20px;
+    position: absolute;
+    top: 130px;
+    transition: transform 1s;
+}
+
+form input {
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border: 1px solid var(--grey-color);
+}
+
+form .btn {
+    width: 100%;
+    border: none;
+    margin: 10px 0;
+    border-radius: 0;
+}
+
+form .btn:focus {
+    outline: none;
+}
+
+form .btn:hover {
+    cursor: pointer;
+}
+
+#LoginForm {
+    left: -300px;
+}
+
+#RegForm2 {
+    top: 30px;
+    left: 0;
+}
+
+#Indicator2 {
+    width: 50px;
+    border: none;
+    height: 3px;
+    background: var(--grey-color);
+    margin-top: 8px;
+    transform: translateX(130px);
+    transition: transform 1s;
+}
+
+/*Responsiveness*/
+.menuicon {
+    width: 28px;
+    margin-left: 20px;
+    display: none;
+}
+
+/*Cart 2page*/
+.cart2 {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 360px;
+    min-height: 100vh;
+    padding: 20px;
+    background: var(--lightgrey-color);
+    box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
+    transition: 0.3s;
+}
+
+.cart2.active {
+    right: 0;
+}
+
+.cart2-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+}
+
+.cart2-box {
+    display: grid;
+    grid-template-columns: 32% 50% 18%;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1 rem;
+}
+
+.cart2-img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    padding: 10px
+}
+
+.detail-box2 {
+    display: grid;
+    row-gap: 0.5rem;
+}
+
+.cart2-product-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+
+/* wrapper 2 */
+
+.description-wrapper2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 102%;
+    background-color: rgba(255, 255, 255, 0.884);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    /* Initially hidden */
+    cursor: pointer;
+}
+
+
+.col-4:hover .description-wrapper2 {
+    transform: translateY(0);
+    opacity: 1;
+    cursor: pointer;
+}
+
+
+.description-wrapper2 h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0 5px 70px;
+}
+
+
+.description-wrapper2 p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    text-align: center;
+    margin: 0;
+}
+
+.description-wrapper2 button {
+    display: block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.description-wrapper2 button:hover {
+    background-color: #333333;
+}
+
+#wlcback {
+    display: none;
+    font-size: 20px;
+    margin-top: 50%;
+    margin-right: 14%;
+}
+
+#signoutbtn {
+    display: none;
+    margin-top: 10%;
+    margin-left: 32%;
+    background: var(--darkgrey-color);
+    color: var(--white-color);
+    padding: 8px 30px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+
+
+}
+
+#dash {
+    display: none;
+}
+
+@media only screen and (max-width:800px) {
+    nav ul {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background-color: #9999a1;
+        width: 100%;
+        overflow: hidden;
+        transition: max-height 0.5s;
+    }
+
+    nav ul li {
+        display: block;
+        margin-right: 50px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    nav ul li a {
+        color: white;
+    }
+
+    .menuicon {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .row {
+        text-align: center;
+    }
+
+    .col-2,
+    .col-3,
+    .col-4 {
+        flex-basis: 100%;
+    }
+}
+
+
+
+
+
+/*Scrolling Effects combined with Js*/
+html {
+    scroll-behavior: smooth;
+}
