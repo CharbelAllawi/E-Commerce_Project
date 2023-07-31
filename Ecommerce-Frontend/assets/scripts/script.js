@@ -56,11 +56,11 @@ async function deleteProduct(event, product_id) {
     await remove();
     location.reload();
 }
-unction menuToggle() {
+// this function is to animate the login-signup
+function menuToggle() {
     MenuItems.style.maxHeight = MenuItems.style.maxHeight === "0px" ? "200px" : "0px";
 }
 
-// For login-reg form
 var LoginForm = document.getElementById("LoginForm");
 var RegForm = document.getElementById("RegForm");
 var Indicator = document.getElementById("Indicator");
@@ -84,3 +84,49 @@ function menutoggle() {
         MenuItems.style.maxHeight = "0px";
     }
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    //this is for favourite section
+    var MenuItems = document.getElementById("MenuItems");
+    MenuItems.style.maxHeight = "0px";
+    // favourite
+    let cartIcon2 = document.querySelector("#cart-icon2");
+    let cart2 = document.querySelector(".cart2");
+    let closeCart2 = document.querySelector("#close-cart2");
+
+    // Open favourite
+    cartIcon2.onclick = () => {
+        cart2.classList.add("active");
+    };
+
+    // Close favourite
+    closeCart2.onclick = () => {
+        cart2.classList.remove("active");
+    };
+
+    // favourite start
+    document.addEventListener("DOMContentLoaded", ready2);
+
+    function ready2() {
+        var removeCartButtons = document.getElementsByClassName("cart-remove2");
+        for (var i = 0; i < removeCartButtons.length; i++) {
+            var button = removeCartButtons[i];
+            button.addEventListener("click", removeCartItem);
+        }
+        var addfav = document.getElementsByClassName("add-to-favorites-btn");
+        for (var i = 0; i < addfav.length; i++) {
+            var button = addfav[i];
+            button.addEventListener("click", addCartClicked2);
+        }
+    }
+    // Add to Cart
+    function addCartClicked2(event) {
+        var button = event.target;
+        var shopProduct = button.parentElement;
+        var title = shopProduct.querySelector(".items").innerHTML;
+
+        var price = shopProduct.querySelector(".cart-price").innerHTML;
+        var productImg = shopProduct.querySelector(".images").innerHTML;
+        addfavorite(title, price, productImg);
+    }
