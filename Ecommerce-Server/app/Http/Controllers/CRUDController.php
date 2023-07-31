@@ -39,4 +39,13 @@ class CRUDController extends Controller
 
     return json_encode(["products" => $product]);
   }
+  function getproducts($id = null)
+  {
+    if ($id) {
+      $products = Product::find($id);
+    } else {
+      $products = Product::all();
+      return response()->json(['products' => $products]);
+    }
+  }
 }
