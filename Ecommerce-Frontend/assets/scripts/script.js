@@ -205,3 +205,17 @@ document.addEventListener("DOMContentLoaded", () => {
         addProductToCart(title, price, productImg);
         updateTotal();
     }
+    //get products from DB
+    async function getproducts() {
+
+
+        const default_url = "http://127.0.0.1:8000/api/get_products/"
+
+        async function categories() {
+
+            const response = await fetch(default_url, {
+                method: "GET",
+
+            })
+            return response
+        }
