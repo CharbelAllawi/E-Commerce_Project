@@ -43,12 +43,10 @@ function save(event, product_id) {
 
     location.reload();
 }
-
+// this function is to delete item from DB
 async function deleteProduct(event, product_id) {
     const default_url = "http://127.0.0.1:8000/api/remove/" + product_id
-
     async function remove() {
-
         const response = await fetch(default_url, {
             method: "GET",
 
@@ -57,7 +55,32 @@ async function deleteProduct(event, product_id) {
     }
     await remove();
     location.reload();
+}
+unction menuToggle() {
+    MenuItems.style.maxHeight = MenuItems.style.maxHeight === "0px" ? "200px" : "0px";
+}
 
+// For login-reg form
+var LoginForm = document.getElementById("LoginForm");
+var RegForm = document.getElementById("RegForm");
+var Indicator = document.getElementById("Indicator");
 
+function register() {
+    RegForm.style.transform = "translateX(0)";
+    LoginForm.style.transform = "translateX(0)";
+    Indicator.style.transform = "translateX(100%)";
+}
 
+function login() {
+    RegForm.style.transform = "translateX(300px)";
+    LoginForm.style.transform = "translateX(300px)";
+    Indicator.style.transform = "translateX(0)";
+}
+function menutoggle() {
+    if (MenuItems.style.maxHeight == "0px") {
+        MenuItems.style.maxHeight = "200px";
+    }
+    else {
+        MenuItems.style.maxHeight = "0px";
+    }
 }
