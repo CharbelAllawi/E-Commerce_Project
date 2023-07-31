@@ -219,3 +219,249 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             return response
         }
+
+
+
+        async function answer() {
+
+            const result = await categories()
+            const jsonresult = await result.json()
+            return jsonresult
+        }
+
+        products = await answer();
+        let irow = document.querySelector(".irow");
+        if (localStorage.getItem('id') == null || localStorage.getItem('id') != 1) {
+
+
+            for (let i = 0; i < products.products.length; i++) {
+                const product = products.products[i];
+
+                if (products.products[i]['category_id'] == '1') {
+
+                    irow.innerHTML += `<div class="col-4">
+                <img src="${products.products[i]['imageurl']}" alt="${products.products[i]['name']}">
+                <h4>${products.products[i]['name']}<h4>
+                <div class="description-wrapper">
+                    <p class="items">Name: ${products.products[i]['name']}</p>
+                    <p class="images">${products.products[i]['imageurl']}</p>
+                    <p>Description: ${products.products[i]['description']}</p>
+                    <p>Color: ${products.products[i]['color']}</p>
+                    <p class="cart-price">Price: ${products.products[i]['price']}$</p>
+                    <p class="cart-price">Category: iPhone</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                    <button class="add-to-favorites-btn">Add to Favorites</button>
+             
+                </div >
+                <div style="display: none;" class="description-wrapper2" id="description-wrapper2-${product.product_id}">
+                <form id="RegForm2">
+                <input id="product-name-${product.product_id}" type="text" placeholder="Name: ${products.products[i]['name']}">
+                <input id="product-price-${product.product_id}" type="text" placeholder="Price: ${products.products[i]['price']}">
+                <input id="product-color-${product.product_id}" type="text" placeholder="Color: ${products.products[i]['color']}">
+                <input id="product-img-${product.product_id}" class="upload" id="fileInput" type="file" placeholder="image">
+                <input id="product-description-${product.product_id}" type="text" placeholder="Description:${products.products[i]['description']}">
+                <select name="category" id="product-category-${product.product_id}">
+                    <option value="iPhone">iPhone</option>
+                    <option value="iPad - Mac">iPad - Mac</option>
+                    <option value="iAccessories">iAccessories</option>
+                </select>
+                <button type="button" class="btn" onclick="save(event, ${product.product_id})">Save</button>
+                <button type="button" class="btn closebtn" onclick="closebutton(event, ${product.product_id})">Close</button>
+            </form>
+              </div>
+              `
+
+
+                }
+                if (products.products[i]['category_id'] == '2') {
+
+                    document.querySelector('.irow2').innerHTML += `<div class="col-4">
+                    <img src="${products.products[i]['imageurl']}" alt="${products.products[i]['name']}">
+                    <h4>${products.products[i]['name']}<h4>
+                    <div class="description-wrapper">
+                    <p class="items">Name: ${products.products[i]['name']}</p>
+                    <p class="images">${products.products[i]['imageurl']}</p>
+                    <p>Description: ${products.products[i]['description']}</p>
+                    <p>Color: ${products.products[i]['color']}</p>
+                    <p class="cart-price">Price: ${products.products[i]['price']}$</p>
+                    <p class="cart-price">Category: iPad - Mac</p>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                        <button class="add-to-favorites-btn">Add to Favorites</button>
+                    </div >
+                    <div style="display: none;" class="description-wrapper2" id="description-wrapper2-${product.product_id}">
+                    <form id="RegForm2">
+                    <input id="product-name-${product.product_id}" type="text" placeholder="Name: ${products.products[i]['name']}">
+                    <input id="product-price-${product.product_id}" type="text" placeholder="Price: ${products.products[i]['price']}">
+                    <input id="product-color-${product.product_id}" type="text" placeholder="Color: ${products.products[i]['color']}">
+                    <input id="product-img-${product.product_id}" class="upload" id="fileInput" type="file" placeholder="image">
+                    <input id="product-description-${product.product_id}" type="text" placeholder="Description:${products.products[i]['description']}">
+                    <select name="category" id="product-category-${product.product_id}">
+                        <option value="iPhone">iPhone</option>
+                        <option value="iPad - Mac">iPad - Mac</option>
+                        <option value="iAccessories">iAccessories</option>
+                    </select>
+                    <button type="button" class="btn" onclick="save(event, ${product.product_id})">Save</button>
+                    <button type="button" class="btn closebtn" onclick="closebutton(event, ${product.product_id})">Close</button>
+                </form>
+                  </div>
+                  `
+                }
+                if (products.products[i]['category_id'] == '3') {
+
+                    document.querySelector('.irow3').innerHTML += `<div class="col-4">
+                    <img src="${products.products[i]['imageurl']}" alt="${products.products[i]['name']}">
+                    <h4>${products.products[i]['name']}<h4>
+                    <div class="description-wrapper">
+                    <p class="items">Name: ${products.products[i]['name']}</p>
+                    <p class="images">${products.products[i]['imageurl']}</p>
+                    <p>Description: ${products.products[i]['description']}</p>
+                    <p>Color: ${products.products[i]['color']}</p>
+                    <p class="cart-price">Price: ${products.products[i]['price']}$</p>
+                    <p class="cart-price">Category: iAccessories</p>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                        <button class="add-to-favorites-btn">Add to Favorites</button>
+                    </div >
+                    <div style="display: none;" class="description-wrapper2" id="description-wrapper2-${product.product_id}">
+             <form id="RegForm2">
+            <input id="product-name-${product.product_id}" type="text" placeholder="Name: ${products.products[i]['name']}">
+            <input id="product-price-${product.product_id}" type="text" placeholder="Price: ${products.products[i]['price']}">
+            <input id="product-color-${product.product_id}" type="text" placeholder="Color: ${products.products[i]['color']}">
+            <input id="product-img-${product.product_id}" class="upload" id="fileInput" type="file" placeholder="image">
+            <input id="product-description-${product.product_id}" type="text" placeholder="Description:${products.products[i]['description']}">
+            <select name="category" id="product-category-${product.product_id}">
+                <option value="iPhone">iPhone</option>
+                <option value="iPad - Mac">iPad - Mac</option>
+                <option value="iAccessories">iAccessories</option>
+            </select>
+            <button type="button" class="btn" onclick="save(event, ${product.product_id})">Save</button>
+            <button type="button" class="btn closebtn" onclick="closebutton(event, ${product.product_id})">Close</button>
+        </form>
+                  </div>
+                  `
+                }
+            }
+
+
+
+
+        }
+        if (localStorage.getItem('id') == 1) {
+            document.getElementById("dash").style.display = "block";
+
+            for (let i = 0; i < products.products.length; i++) {
+                const product = products.products[i];
+
+                if (products.products[i]['category_id'] == '1') {
+
+                    irow.innerHTML += `<div class="col-4">
+                <img src="${products.products[i]['imageurl']}" alt="${products.products[i]['name']}">
+                <h4>${products.products[i]['name']}<h4>
+                <div class="description-wrapper">
+                    <p class="items">Name: ${products.products[i]['name']}</p>
+                    <p class="images">${products.products[i]['imageurl']}</p>
+                    <p>Description: ${products.products[i]['description']}</p>
+                    <p>Color: ${products.products[i]['color']}</p>
+                    <p class="cart-price">Price: ${products.products[i]['price']}$</p>
+                    <p class="cart-price">Category: iPhone</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                    <button class="add-to-favorites-btn">Add to Favorites</button>
+                    <button class="edit-button" onclick="editProduct(event, ${product.product_id})">Edit</button>
+                    <button class="delete-button" onclick="deleteProduct(event, ${product.product_id})">Delete</button>
+                </div >
+                <div style="display: none;" class="description-wrapper2" id="description-wrapper2-${product.product_id}">
+                <form id="RegForm2">
+                <input id="product-name-${product.product_id}" type="text" placeholder="Name: ${products.products[i]['name']}">
+                <input id="product-price-${product.product_id}" type="text" placeholder="Price: ${products.products[i]['price']}">
+                <input id="product-color-${product.product_id}" type="text" placeholder="Color: ${products.products[i]['color']}">
+                <input id="product-img-${product.product_id}" class="upload" id="fileInput" type="file" placeholder="image">
+                <input id="product-description-${product.product_id}" type="text" placeholder="Description:${products.products[i]['description']}">
+                <select name="category" id="product-category-${product.product_id}">
+                    <option value="iPhone">iPhone</option>
+                    <option value="iPad - Mac">iPad - Mac</option>
+                    <option value="iAccessories">iAccessories</option>
+                </select>
+                <button type="button" class="btn" onclick="save(event, ${product.product_id})">Save</button>
+                <button type="button" class="btn closebtn" onclick="closebutton(event, ${product.product_id})">Close</button>
+            </form>
+              </div>
+              `
+
+
+                }
+                if (products.products[i]['category_id'] == '2') {
+
+                    document.querySelector('.irow2').innerHTML += `<div class="col-4">
+                    <img src="${products.products[i]['imageurl']}" alt="${products.products[i]['name']}">
+                    <h4>${products.products[i]['name']}<h4>
+                    <div class="description-wrapper">
+                    <p class="items">Name: ${products.products[i]['name']}</p>
+                    <p class="images">${products.products[i]['imageurl']}</p>
+                    <p>Description: ${products.products[i]['description']}</p>
+                    <p>Color: ${products.products[i]['color']}</p>
+                    <p class="cart-price">Price: ${products.products[i]['price']}$</p>
+                    <p class="cart-price">Category: iPad - Mac</p>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                        <button class="add-to-favorites-btn">Add to Favorites</button>
+                        <button class="edit-button" onclick="editProduct(event, ${product.product_id})">Edit</button>
+                        <button class="delete-button" onclick="deleteProduct(event, ${product.product_id})">Delete</button>
+                    </div >
+                    <div style="display: none;" class="description-wrapper2" id="description-wrapper2-${product.product_id}">
+                    <form id="RegForm2">
+                    <input id="product-name-${product.product_id}" type="text" placeholder="Name: ${products.products[i]['name']}">
+                    <input id="product-price-${product.product_id}" type="text" placeholder="Price: ${products.products[i]['price']}">
+                    <input id="product-color-${product.product_id}" type="text" placeholder="Color: ${products.products[i]['color']}">
+                    <input id="product-img-${product.product_id}" class="upload" id="fileInput" type="file" placeholder="image">
+                    <input id="product-description-${product.product_id}" type="text" placeholder="Description:${products.products[i]['description']}">
+                    <select name="category" id="product-category-${product.product_id}">
+                        <option value="iPhone">iPhone</option>
+                        <option value="iPad - Mac">iPad - Mac</option>
+                        <option value="iAccessories">iAccessories</option>
+                    </select>
+                    <button type="button" class="btn" onclick="save(event, ${product.product_id})">Save</button>
+                    <button type="button" class="btn closebtn" onclick="closebutton(event, ${product.product_id})">Close</button>
+                </form>
+                  </div>
+                  `
+                }
+                if (products.products[i]['category_id'] == '3') {
+
+                    document.querySelector('.irow3').innerHTML += `<div class="col-4">
+                    <img src="${products.products[i]['imageurl']}" alt="${products.products[i]['name']}">
+                    <h4>${products.products[i]['name']}<h4>
+                    <div class="description-wrapper">
+                    <p class="items">Name: ${products.products[i]['name']}</p>
+                    <p class="images">${products.products[i]['imageurl']}</p>
+                    <p>Description: ${products.products[i]['description']}</p>
+                    <p>Color: ${products.products[i]['color']}</p>
+                    <p class="cart-price">Price: ${products.products[i]['price']}$</p>
+                    <p class="cart-price">Category: iAccessories</p>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                        <button class="add-to-favorites-btn">Add to Favorites</button>
+                        <button class="edit-button" onclick="editProduct(event, ${product.product_id})">Edit</button>
+                        <button class="delete-button" onclick="deleteProduct(event, ${product.product_id})">Delete</button>
+                    </div >
+                    <div style="display: none;" class="description-wrapper2" id="description-wrapper2-${product.product_id}">
+             <form id="RegForm2">
+            <input id="product-name-${product.product_id}" type="text" placeholder="Name: ${products.products[i]['name']}">
+            <input id="product-price-${product.product_id}" type="text" placeholder="Price: ${products.products[i]['price']}">
+            <input id="product-color-${product.product_id}" type="text" placeholder="Color: ${products.products[i]['color']}">
+            <input id="product-img-${product.product_id}" class="upload" id="fileInput" type="file" placeholder="image">
+            <input id="product-description-${product.product_id}" type="text" placeholder="Description:${products.products[i]['description']}">
+            <select name="category" id="product-category-${product.product_id}">
+                <option value="iPhone">iPhone</option>
+                <option value="iPad - Mac">iPad - Mac</option>
+                <option value="iAccessories">iAccessories</option>
+            </select>
+            <button type="button" class="btn" onclick="save(event, ${product.product_id})">Save</button>
+            <button type="button" class="btn closebtn" onclick="closebutton(event, ${product.product_id})">Close</button>
+        </form>
+                  </div>
+                  `
+                }
+            }
+
+        }
+        ready();
+        ready2();
+    };
+    getproducts();
