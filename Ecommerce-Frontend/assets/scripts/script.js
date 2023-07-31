@@ -450,3 +450,48 @@ document.addEventListener("DOMContentLoaded", () => {
         cartRow.innerHTML = cartRowContent;
         cartItems.append(cartRow);
     }
+    //add product to cart with total
+    function addProductToCart(title, price, productImg) {
+        var cartRow = document.createElement("div");
+        cartRow.classList.add("cart-row");
+        var cartItems = document.querySelector(".cart-content");
+        var cartItemNames = cartItems.getElementsByClassName("cart-product-title");
+        for (var i = 0; i < cartItemNames.length; i++) {
+            if (cartItemNames[i].innerText === title) {
+                alert("You have already added this item to the cart");
+                return;
+            }
+        }
+        var cartRowContent = `
+                        <div class="cart-item">
+                            <img class="cart-img" src="${productImg}">
+                                <span class="cart-product-title">${title}</span>
+                        </div>
+                        <span class="cart-price">${price}</span>
+                        <input class="cart-quantity" type="number" value="1">
+                            <img class="cart-remove" src="assets/images/deleteicon.svg" alt="Remove">
+                                `;
+        cartRow.innerHTML = cartRowContent;
+        cartItems.append(cartRow);
+        cartRow.querySelector(".cart-remove").addEventListener("click", removeCartItem);
+        cartRow.querySelector(".cart-quantity").addEventListener("change", quantityChanged);
+    }
+
+    function updateTotal() {
+        var cartItems = document.getElementsByClassName("cart-row");
+        var total = 0;
+        for (var i = 0; i < cartItems.length; i++) {
+            var cartItem = cartItems[i];
+            var priceElement = cartItem.querySelector(".cart-price");
+            var quantityElement = cartItem.querySelector(".cart-quantity");
+            priced = priceElement.innerText.replace("$", "");
+            var price = parseFloat(priced.replace("price: ", ""));
+            var quantity = quantityElement.value;
+            total += price * quantity;
+        }
+        total = Math.round(total * 100) / 100;
+        document.querySelector(".total-price").innerText = "$" + total;
+    }
+
+
+});
