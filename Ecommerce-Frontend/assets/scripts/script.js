@@ -435,3 +435,18 @@ document.addEventListener("DOMContentLoaded", () => {
         ready2();
     };
     getproducts();
+    //this function is to addfavorites to cart
+    function addfavorite(title, price, productImg) {
+        var cartRow = document.createElement("div");
+        cartRow.classList.add("cart-row2");
+        var cartItems = document.querySelector(".cart-content2");
+        var cartRowContent = `
+                        <div class="cart-item">
+                            <img class="cart-img" src="${productImg}">
+                                <span class="cart-product-title">${title}</span>
+                        </div>
+                        <span class="cart-price">${price}</span>
+                                `;
+        cartRow.innerHTML = cartRowContent;
+        cartItems.append(cartRow);
+    }
