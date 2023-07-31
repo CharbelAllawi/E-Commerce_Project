@@ -29,3 +29,75 @@ document.addEventListener("DOMContentLoaded", () => {
       body: formdata,
       redirect: 'follow'
     };
+    fetch("http://127.0.0.1:8000/api/register/", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        // Store the response in a variable
+        const responseData = result;
+        document.querySelector(".usernameid").value = "";
+        document.querySelector(".emailid").value = "";
+        document.querySelector(".passwordid").value = "";
+        console.log(responseData.user.id); // You can access the response data here
+        localStorage.setItem('id', responseData.user.id);
+        document.getElementById("RegForm").style.display = "none";
+        document.getElementById("LoginForm").style.display = "none";
+
+        document.getElementById("f").style.display = "none";
+        document.getElementById("wlcback").style.display = "block";
+        document.getElementById("signoutbtn").style.display = "block";
+
+      })
+      .catch(error => console.log('error', error));
+  });
+
+
+
+
+
+
+
+  document.querySelector(".loginbtn").addEventListener("click", () => {
+    let email = document.querySelector(".emailidlogin").value;
+    let password = document.querySelector(".passwordidlogin").value;
+
+    let formdata = new FormData();
+    formdata.append("email", email);
+    formdata.append("password", password);
+
+    let requestOptions = {
+      method: 'POST',
+      body: formdata,
+      redirect: 'follow'
+    };
+
+    fetch("http://127.0.0.1:8000/api/login/", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        // Store the response in a variable
+        const responseData = result;
+        document.querySelector(".emailidlogin").value = "";
+        document.querySelector(".passwordidlogin").value = "";
+        console.log(responseData.user.id); // You can access the response data here
+        localStorage.setItem('id', responseData.user.id);
+        document.getElementById("RegForm").style.display = "none";
+        document.getElementById("LoginForm").style.display = "none";
+
+        document.getElementById("f").style.display = "none";
+        document.getElementById("wlcback").style.display = "block";
+        document.getElementById("signoutbtn").style.display = "block";
+
+      })
+      .catch(error => console.log('error', error));
+  });
+
+
+
+
+
+
+
+
+
+});
+
+
