@@ -205,40 +205,27 @@ document.addEventListener("DOMContentLoaded", () => {
         addProductToCart(title, price, productImg);
         updateTotal();
     }
-    //get products from DB
+    //here im getting products from DB
     async function getproducts() {
-
-
         const default_url = "http://127.0.0.1:8000/api/get_products/"
-
         async function categories() {
 
             const response = await fetch(default_url, {
                 method: "GET",
-
             })
             return response
         }
-
-
-
         async function answer() {
-
             const result = await categories()
             const jsonresult = await result.json()
             return jsonresult
         }
-
         products = await answer();
         let irow = document.querySelector(".irow");
         if (localStorage.getItem('id') == null || localStorage.getItem('id') != 1) {
-
-
             for (let i = 0; i < products.products.length; i++) {
                 const product = products.products[i];
-
                 if (products.products[i]['category_id'] == '1') {
-
                     irow.innerHTML += `<div class="col-4">
                 <img src="${products.products[i]['imageurl']}" alt="${products.products[i]['name']}">
                 <h4>${products.products[i]['name']}<h4>
@@ -251,7 +238,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p class="cart-price">Category: iPhone</p>
                     <button class="add-to-cart-btn">Add to Cart</button>
                     <button class="add-to-favorites-btn">Add to Favorites</button>
-             
                 </div >
                 <div style="display: none;" class="description-wrapper2" id="description-wrapper2-${product.product_id}">
                 <form id="RegForm2">
@@ -270,11 +256,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </form>
               </div>
               `
-
-
                 }
                 if (products.products[i]['category_id'] == '2') {
-
                     document.querySelector('.irow2').innerHTML += `<div class="col-4">
                     <img src="${products.products[i]['imageurl']}" alt="${products.products[i]['name']}">
                     <h4>${products.products[i]['name']}<h4>
@@ -307,7 +290,6 @@ document.addEventListener("DOMContentLoaded", () => {
                   `
                 }
                 if (products.products[i]['category_id'] == '3') {
-
                     document.querySelector('.irow3').innerHTML += `<div class="col-4">
                     <img src="${products.products[i]['imageurl']}" alt="${products.products[i]['name']}">
                     <h4>${products.products[i]['name']}<h4>
@@ -340,19 +322,12 @@ document.addEventListener("DOMContentLoaded", () => {
                   `
                 }
             }
-
-
-
-
         }
         if (localStorage.getItem('id') == 1) {
             document.getElementById("dash").style.display = "block";
-
             for (let i = 0; i < products.products.length; i++) {
                 const product = products.products[i];
-
                 if (products.products[i]['category_id'] == '1') {
-
                     irow.innerHTML += `<div class="col-4">
                 <img src="${products.products[i]['imageurl']}" alt="${products.products[i]['name']}">
                 <h4>${products.products[i]['name']}<h4>
@@ -385,11 +360,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </form>
               </div>
               `
-
-
                 }
                 if (products.products[i]['category_id'] == '2') {
-
                     document.querySelector('.irow2').innerHTML += `<div class="col-4">
                     <img src="${products.products[i]['imageurl']}" alt="${products.products[i]['name']}">
                     <h4>${products.products[i]['name']}<h4>
@@ -424,7 +396,6 @@ document.addEventListener("DOMContentLoaded", () => {
                   `
                 }
                 if (products.products[i]['category_id'] == '3') {
-
                     document.querySelector('.irow3').innerHTML += `<div class="col-4">
                     <img src="${products.products[i]['imageurl']}" alt="${products.products[i]['name']}">
                     <h4>${products.products[i]['name']}<h4>
@@ -459,7 +430,6 @@ document.addEventListener("DOMContentLoaded", () => {
                   `
                 }
             }
-
         }
         ready();
         ready2();
