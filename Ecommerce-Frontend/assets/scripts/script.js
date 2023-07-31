@@ -485,7 +485,6 @@ document.addEventListener("DOMContentLoaded", () => {
             var priceElement = cartItem.querySelector(".cart-price");
             var quantityElement = cartItem.querySelector(".cart-quantity");
             priced = priceElement.innerText.replace("$", "");
-            console.log(priced)
             var price = parseFloat(priced.replace("Price: ", ""));
             var quantity = quantityElement.value;
             total += price * quantity;

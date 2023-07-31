@@ -1,13 +1,8 @@
-var MenuItems = document.getElementById("MenuItems");
-MenuItems.style.maxHeight = "0px";
-function menuToggle() {
-  MenuItems.style.maxHeight = MenuItems.style.maxHeight === "0px" ? "200px" : "0px";
-}
-const selectElement = document.getElementById('product-category');
-// the below code is to add products to the main page
 function product() {
   const submit_btn = document.getElementById("submit-product");
   submit_btn.addEventListener('click', (e) => {
+    const selectElement = document.getElementById('product-category');
+
     e.preventDefault();
     let name = document.getElementById("product-name").value;
     let description = document.getElementById("product-description").value;
@@ -37,12 +32,17 @@ function product() {
     };
     fetch("http://127.0.0.1:8000/api/add_update_product/", requestOptions)
       .then(response => response.json())
-      .then(result => console.log(result))
+      .then(result => {
+        console.log(result);
+        document.getElementById("product-name").value = "";
+        document.getElementById("product-description").value = "";
+        document.getElementById("product-price").value = "";
+        document.getElementById("product-img").value = "";
+        document.getElementById("product-color").value = "";
+      })
       .catch(error => console.log('error', error));
 
   });
+
 }
 product();
-
-
-

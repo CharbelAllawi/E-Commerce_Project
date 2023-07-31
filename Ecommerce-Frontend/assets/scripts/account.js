@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(response => response.json())
       .then(result => {
         const responseData = result;
+        console.log(responseData)
         document.querySelector(".emailidlogin").value = "";
         document.querySelector(".passwordidlogin").value = "";
         localStorage.setItem('id', responseData.user.id);
