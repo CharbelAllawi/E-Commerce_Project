@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
             button.addEventListener("click", addCartClicked2);
         }
     }
-    // Add to Cart
+    // Add to favourite
     function addCartClicked2(event) {
         var button = event.target;
         var shopProduct = button.parentElement;
@@ -129,4 +129,79 @@ document.addEventListener("DOMContentLoaded", () => {
         var price = shopProduct.querySelector(".cart-price").innerHTML;
         var productImg = shopProduct.querySelector(".images").innerHTML;
         addfavorite(title, price, productImg);
+    }
+    //this is for cart section
+
+    // Cart
+    let cartIcon = document.querySelector("#cart-icon");
+    let cart = document.querySelector(".cart");
+    let closeCart = document.querySelector("#close-cart");
+
+    // Open Cart
+    cartIcon.onclick = () => {
+        cart.classList.add("active");
+    };
+
+    // Close Cart
+    closeCart.onclick = () => {
+        cart.classList.remove("active");
+    };
+
+    // Cart Working
+    document.addEventListener("DOMContentLoaded", ready);
+
+    // Making Function
+    function ready() {
+        // Remove item from cart
+        var removeCartButtons = document.getElementsByClassName("cart-remove");
+        for (var i = 0; i < removeCartButtons.length; i++) {
+            var button = removeCartButtons[i];
+            button.addEventListener("click", removeCartItem);
+        }
+
+        // Quantity Changes
+        var quantityInputs = document.getElementsByClassName("cart-quantity");
+        for (var i = 0; i < quantityInputs.length; i++) {
+            var input = quantityInputs[i];
+            input.addEventListener("change", quantityChanged);
+        }
+
+        // Add to Cart
+        var addCart = document.getElementsByClassName("add-to-cart-btn");
+        for (var i = 0; i < addCart.length; i++) {
+            var button = addCart[i];
+            button.addEventListener("click", addCartClicked);
+        }
+
+
+    }
+
+    // Function to remove item from the cart
+    function removeCartItem(event) {
+        var buttonClicked = event.target;
+        buttonClicked.parentElement.parentElement.remove();
+        updateTotal();
+    }
+
+    // Function for the quantity change
+    function quantityChanged(event) {
+        var input = event.target;
+        if (isNaN(input.value) || input.value <= 0) {
+            input.value = 1;
+        }
+        updateTotal();
+    }
+
+    // Add to Cart
+    function addCartClicked(event) {
+        var button = event.target;
+        var shopProduct = button.parentElement;
+        var title = shopProduct.querySelector(".items").innerHTML;
+        // var price = shopProduct.querySelector(".cart-price").innerText;
+        // var title = "hello";
+        var price = shopProduct.querySelector(".cart-price").innerHTML;
+        var productImg = shopProduct.querySelector(".images").innerHTML;
+        // var productImg = "assets/images/iphone14.svg"
+        addProductToCart(title, price, productImg);
+        updateTotal();
     }
