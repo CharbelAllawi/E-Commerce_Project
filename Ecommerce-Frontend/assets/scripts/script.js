@@ -44,3 +44,20 @@ function save(event, product_id) {
     location.reload();
 }
 
+async function deleteProduct(event, product_id) {
+    const default_url = "http://127.0.0.1:8000/api/remove/" + product_id
+
+    async function remove() {
+
+        const response = await fetch(default_url, {
+            method: "GET",
+
+        })
+        return response
+    }
+    await remove();
+    location.reload();
+
+
+
+}
