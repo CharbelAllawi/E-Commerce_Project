@@ -48,4 +48,9 @@ class CRUDController extends Controller
       return response()->json(['products' => $products]);
     }
   }
+  function getProductbyCategory($id)
+  {
+    $categories = Category::where("product_id", $id)->get();
+    return json_encode(["products" => $categories]);
+  }
 }
