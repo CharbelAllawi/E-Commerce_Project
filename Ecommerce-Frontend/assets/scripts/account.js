@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector(".usernameid").value = "";
         document.querySelector(".emailid").value = "";
         document.querySelector(".passwordid").value = "";
-        localStorage.setItem('id', responseData.user.id);
+        localStorage.setItem('id', parseJwt(responseData.authorisation.token).sub);
         document.getElementById("RegForm").style.display = "none";
         document.getElementById("LoginForm").style.display = "none";
 
@@ -63,10 +63,11 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(response => response.json())
       .then(result => {
         const responseData = result;
-        console.log(responseData)
+        console.log()
         document.querySelector(".emailidlogin").value = "";
         document.querySelector(".passwordidlogin").value = "";
-        localStorage.setItem('id', responseData.user.id);
+        console.log(parseJwt(responseData.authorisation.token).sub)
+        localStorage.setItem('id', parseJwt(responseData.authorisation.token));
         document.getElementById("RegForm").style.display = "none";
         document.getElementById("LoginForm").style.display = "none";
 
@@ -79,4 +80,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+function parseJwt(token) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
+    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
 
+  return JSON.parse(jsonPayload);
+}
