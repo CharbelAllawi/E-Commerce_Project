@@ -23,6 +23,8 @@ route::get('/get_categories/{id?}', [CRUDController::class, "getcategories"]);
 route::get('/get_products/{id?}', [CRUDController::class, "getproducts"]);
 Route::get('/product_category/{id}', [CRUDController::class, "getProductbyCategory"]);
 route::post('/addimage', [ImageController::class, "addimage"]);
+route::get('/add_favorite/{id?}', [CRUDController::class, "getcategories"]);
+route::get('/add_cart/{id?}', [CRUDController::class, "getcategories"]);
 
 route::get('/remove/{id?}', [CRUDController::class, "removeproduct"]);
 
