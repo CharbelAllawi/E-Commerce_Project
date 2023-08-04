@@ -66,8 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log()
         document.querySelector(".emailidlogin").value = "";
         document.querySelector(".passwordidlogin").value = "";
-        console.log(parseJwt(responseData.authorisation.token).sub)
-        localStorage.setItem('id', parseJwt(responseData.authorisation.token));
+        localStorage.setItem('id', parseJwt(responseData.authorisation.token).sub);
         document.getElementById("RegForm").style.display = "none";
         document.getElementById("LoginForm").style.display = "none";
 

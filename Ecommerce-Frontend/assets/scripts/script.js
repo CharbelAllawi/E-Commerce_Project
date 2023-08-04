@@ -222,6 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         products = await answer();
         let irow = document.querySelector(".irow");
+        console.log(localStorage.getItem('id'));
         if (localStorage.getItem('id') == null || localStorage.getItem('id') != 1) {
             for (let i = 0; i < products.products.length; i++) {
                 const product = products.products[i];
